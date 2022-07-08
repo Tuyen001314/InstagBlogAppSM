@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Instag App SM</string>
+    <string name="username">Enter Your Email</string>
+    <string name="password">Enter Your Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_content">Sign Up</string>
+    <string name="already_registered_sign_in">Already Registered ? Sign In</string>
+    <string name="sign_in_content">Sign In</string>
+    <string name="sign_in">sign in</string>
+    <string name="not_registered_yet_sign_up">Not Registered Yet ? Sign Up</string>
+    <string name="my_profile">My profile</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="instag">Instag</string>
+    <string name="enter_your_name">Enter Your Name</string>
+    <string name="write_caption_here">Write Caption Here ...</string>
+</resources>

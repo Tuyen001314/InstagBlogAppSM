@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "912052376094",
+    "project_id": "instag-app-sm",
+    "storage_bucket": "instag-app-sm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912052376094:android:66bc3f5c118ec33d0d140f",
+        "android_client_info": {
+          "package_name": "com.example.instagappsm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912052376094-u8479l3t5ac266oc865gqn7trcp645fn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.instagappsm",
+            "certificate_hash": "a33d2dc8ed64303a63d1562456a71afc975cace7"
+          }
+        },
+        {
+          "client_id": "912052376094-kqgiulc4d45phjufdsppt3ha5itqbo2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4DHNuisfHFvxUxhBHAWSh2zMHyzA1Pdk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912052376094-kqgiulc4d45phjufdsppt3ha5itqbo2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
