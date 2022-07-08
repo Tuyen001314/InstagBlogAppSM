@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,7 +15,6 @@ import android.widget.Toast;
 import com.example.instagappsm.R;
 import com.example.instagappsm.adapter.CommentAdapter;
 import com.example.instagappsm.model.Comments;
-import com.example.instagappsm.model.IdPost;
 import com.example.instagappsm.model.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,9 +26,7 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.auth.User;
 
-import java.time.chrono.JapaneseDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -38,13 +34,13 @@ import java.util.Map;
 
 public class CommentActivity extends AppCompatActivity {
 
-    private IdPost idPost;
     private FirebaseAuth auth;
     private RecyclerView recyclerViewComment;
     private Button btnAddComment;
     private EditText edtComment;
     private List<Comments> mList;
     private List<Users> usersList;
+    private List<String> idListComment;
     private String currentUserId;
     private String post_id;
     private FirebaseFirestore firestore;
@@ -66,7 +62,8 @@ public class CommentActivity extends AppCompatActivity {
 
         mList = new ArrayList<>();
         //usersList = new ArrayList<>();
-        adapter = new CommentAdapter(mList, CommentActivity.this, post_id);
+        idListComment = new ArrayList<>();
+        adapter = new CommentAdapter(mList, CommentActivity.this, post_id, idListComment);
 
 
         recyclerViewComment.setHasFixedSize(true);
@@ -80,6 +77,7 @@ public class CommentActivity extends AppCompatActivity {
                     if (documentChange.getType() == DocumentChange.Type.ADDED) {
                         Comments comments = documentChange.getDocument().toObject(Comments.class);
                         mList.add(comments);
+                        idListComment.add(documentChange.getDocument().getId().toString());
                         adapter.notifyDataSetChanged();
                     }
                     else {

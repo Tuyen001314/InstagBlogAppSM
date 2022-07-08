@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.view.menu.MenuView;
+import androidx.constraintlayout.motion.widget.MotionHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.instagappsm.R;
+import com.example.instagappsm.activity.OtherUserProfile;
 import com.example.instagappsm.model.Comments;
 import com.example.instagappsm.model.Post;
 import com.example.instagappsm.model.PostId;
@@ -28,6 +31,7 @@ import com.example.instagappsm.model.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -49,12 +53,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     private String currentId;
     private FirebaseFirestore firestore;
     private String idPost;
+    private List<String> idListComment;
 
 
-    public CommentAdapter(List<Comments> commentsList, Activity context, String idPost) {
+    public CommentAdapter(List<Comments> commentsList, Activity context, String idPost, List<String> idListComment) {
         this.commentsList = commentsList;
         this.context = context;
         this.idPost = idPost;
+        this.idListComment = idListComment;
     }
 
     @NonNull
@@ -84,7 +90,25 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                     String image = task.getResult().getString("image");
 
                     holder.setCircleImageView(image);
+                    holder.circleImageViewComment.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, OtherUserProfile.class);
+                            intent.putExtra("name", name);
+                            intent.putExtra("image", image);
+                            context.startActivity(intent);
+                        }
+                    });
                     holder.setmUsername(name);
+                    holder.mUsername.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, OtherUserProfile.class);
+                            intent.putExtra("name", name);
+                            intent.putExtra("image", image);
+                            context.startActivity(intent);
+                        }
+                    });
 
                     if(curentUserId.equals(userId)) {
                         holder.mDeleteBtn.setVisibility(View.VISIBLE);
@@ -98,11 +122,12 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                                         .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
-                                                firestore.collection("Posts/" + idPost + "/Comments").document().delete();
+                                                firestore.collection("Posts/" + idPost + "/Comments").document(idListComment.get(position)).delete();
+                                                commentsList.remove(position);
                                             }
                                         });
                                 alert.show();
-                                commentsList.remove(position);
+                                notifyDataSetChanged();
                             }
                         });
                     }
@@ -110,7 +135,6 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
                         holder.mDeleteBtn.setVisibility(View.INVISIBLE);
                         holder.mDeleteBtn.setClickable(false);
                     }
-
                 }
                 else {
                     Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

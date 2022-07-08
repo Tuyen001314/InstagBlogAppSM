@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         mainToolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("SM Instagram");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("SM New Feed");
 
         firestore = FirebaseFirestore.getInstance();
         recyclerView = findViewById(R.id.recyclerView);

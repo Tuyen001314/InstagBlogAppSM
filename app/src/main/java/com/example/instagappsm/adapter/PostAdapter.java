@@ -21,7 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.instagappsm.R;
 import com.example.instagappsm.activity.CommentActivity;
-import com.example.instagappsm.model.IdPost;
+import com.example.instagappsm.activity.OtherUserProfile;
 import com.example.instagappsm.model.Post;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -83,6 +83,26 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
                     holder.setPostUsername(username);
                     holder.setProfilePic(image);
+
+                    holder.postUsername.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, OtherUserProfile.class);
+                            intent.putExtra("name", username);
+                            intent.putExtra("image", image);
+                            context.startActivity(intent);
+                        }
+                    });
+
+                    holder.profilePic.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(context, OtherUserProfile.class);
+                            intent.putExtra("name", username);
+                            intent.putExtra("image", image);
+                            context.startActivity(intent);
+                        }
+                    });
                 }
                 else {
                     Toast.makeText(context, task.getException().toString(), Toast.LENGTH_SHORT).show();
@@ -119,8 +139,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                                 holder.setPostLikes(count);
                             }
                             else {
-                                int count = value.size();
-                                holder.setPostLikes(count);
+                                holder.setPostLikes(0);
                             }
                         }
                     }
