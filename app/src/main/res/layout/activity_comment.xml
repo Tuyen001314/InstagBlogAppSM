@@ -60,7 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginBottom="25dp"
-        android:backgroundTint="@color/pink"
+        android:backgroundTint="@color/red"
         android:text="Add Comment"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"

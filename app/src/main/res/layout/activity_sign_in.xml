@@ -73,7 +73,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="36dp"
         style="@style/ButtonStyle"
-        android:backgroundTint="#EF78A0"
+        android:backgroundTint="#FF7272"
         android:text="@string/sign_in"
         android:textColor="@color/white"
         android:textSize="25sp"

@@ -66,11 +66,11 @@
 
     <Button
         android:id="@+id/button_sign_up"
+        style="@style/ButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="36dp"
-        style="@style/ButtonStyle"
-        android:backgroundTint="#EF78A0"
+        android:backgroundTint="@color/red"
         android:text="@string/sign_up"
         android:textColor="@color/white"
         android:textSize="25sp"

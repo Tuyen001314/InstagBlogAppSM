@@ -5,11 +5,12 @@
       <map>
         <entry key="..\:/Android Project/InstagSM/app/src/main/res/drawable/before_liked.xml" value="0.194" />
         <entry key="..\:/Android Project/InstagSM/app/src/main/res/drawable/custom_edit_text.xml" value="0.1755" />
+        <entry key="..\:/Android Project/InstagSM/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.2555" />
         <entry key="..\:/Android Project/InstagSM/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.157" />
         <entry key="..\:/Android Project/InstagSM/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.155" />
         <entry key="..\:/Android Project/InstagSM/app/src/main/res/layout/activity_add_post.xml" value="0.264" />
         <entry key="..\:/Android Project/InstagSM/app/src/main/res/layout/activity_comment.xml" value="0.264" />
-        <entry key="..\:/Android Project/InstagSM/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Android Project/InstagSM/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android Project/InstagSM/app/src/main/res/layout/activity_other_user_profile.xml" value="0.264" />
         <entry key="..\:/Android Project/InstagSM/app/src/main/res/layout/activity_set_up.xml" value="0.264" />
         <entry key="..\:/Android Project/InstagSM/app/src/main/res/layout/activity_sign_in.xml" value="0.24230072463768115" />
